@@ -1,0 +1,15 @@
+sample,unit,fq1,fq2
+Ago12_1,Ago12,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago_DoubleKO/20160819.A-AGO1AGO2_KO1_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago_DoubleKO/20160819.A-AGO1AGO2_KO1_R2.fastq.gz
+Ago12_2,Ago12,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago_DoubleKO/20160819.A-AGO1AGO2_KO2_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago_DoubleKO/20160819.A-AGO1AGO2_KO2_R2.fastq.gz
+Ago1_1,Ago1,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_deprecated/AS_140822/Ago1/Ago1KO-1_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_deprecated/AS_140822/Ago1/Ago1KO-1_R2.fastq.gz
+Ago1_2,Ago1,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_deprecated/AS_140822/Ago1/Ago1KO-2_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_deprecated/AS_140822/Ago1/Ago1KO-2_R2.fastq.gz
+Ago2_1,Ago2,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago2/Ago2KO-1_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago2/Ago2KO-1_R2.fastq.gz
+Ago2_2,Ago2,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago2/Ago2KO-2_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Ago2/Ago2KO-2_R2.fastq.gz
+Dicer_1,Dicer,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DicerKO/DicerKO1_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DicerKO/DicerKO1_R2.fastq.gz
+Dicer_2,Dicer,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DicerKO/DicerKO2_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DicerKO/DicerKO2_R2.fastq.gz
+Drosha_1,Drosha,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DroshaKO/20141210.B-DROSHA_KO_1_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DroshaKO/20141210.B-DROSHA_KO_1_R2.fastq.gz
+Drosha_2,Drosha,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DroshaKO/20141210.B-DROSHA_KO_2_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_DroshaKO/20141210.B-DROSHA_KO_2_R2.fastq.gz
+Dgcr8_1,Dgcr8,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Dgcr8KO/20150731.A-DGCR8KO2d5_A_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Dgcr8KO/20150731.A-DGCR8KO2d5_A_R2.fastq.gz
+Dgcr8_2,Dgcr8,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Dgcr8KO/20150731.A-DGCR8KO2d5_B_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_Dgcr8KO/20150731.A-DGCR8KO2d5_B_R2.fastq.gz
+WT_1,WT,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_WT/20150925.A-E14_P33_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_WT/20150925.A-E14_P33_R2.fastq.gz
+WT_2,WT,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_WT/20150925.A-E14_P42_R1.fastq.gz,/mnt/cclab_nas/Archive/RNA-seq/ciaudo_WT/20150925.A-E14_P42_R2.fastq.gz

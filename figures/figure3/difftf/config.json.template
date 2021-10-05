@@ -1,0 +1,36 @@
+{
+    "additionalInputFiles": {
+        "HOCOMOCO_mapping": "diffTF_repo/src/TF_Gene_TranslationTables/HOCOMOCO_v10/translationTable_mm10.csv",
+        "RNASeqCounts": "../../data/rnaseq.tsv", # raw read counts as obtainable from GEO
+        "dir_TFBS": "diffTF_repo/mm10PWMScan_HOCOMOCOv10",
+        "refGenome_fasta": "../../data/GRCm38_98/genome_fasta/genome.fa",
+        "genes_gtf": "../../data/GRCm38_98/annotation/genes.gtf",
+        "trrust": "diffTF_repo/trrust_rawdata.mouse.tsv"
+    }, 
+    "peaks": {
+        "minOverlap": 2,
+        "peakType": "narrow",
+        "consensusPeaks": ""
+    },
+    "samples": {
+        "pairedEnd": true,
+        "summaryFile": "sampleData.tsv"
+    },
+    "par_general": {
+        "RNASeqIntegration": true,
+        "dir_scripts": "diffTF_repo/src/R",
+        "TFs": 'AIRE,ARI5B,ARNT,ATF1,BRCA1,CDC5L,CEBPG,CEBPZ,CTCF,E2F4,EGR1,ELF3,ELK4,ENOA,EPAS1,ERR2,ETV4,ETV5,EVI1,FOXO3,FUBP1,GABP1,GABPA,HES1,HIF1A,HLTF,HMGA1,HSF1,IRF1,IRF9,KLF3,KLF4,MAX,MAZ,MECP2,MEF2D,MITF,MXI1,MYBB,MYC,MYCN,NANOG.A,NANOG.S,NF2L1,NF2L2,NFAT5,NFYB,NFYC,NR0B1,NR1H2,NR4A1,NR5A2,NRF1,OTX2,P53,PBX1,PO2F1,PO5F1,RARG.C,RARG.S,REST,SMAD2,SMRC1,SOX13,SOX2,SP1.A,SP1.S,SP3,SRBP2,STAT3,SUH,TBP,TBX3,TCF7,TF2L1,TFDP1,TFE2.A,TFE2.S,TFE3,TGIF1.S,UBIP1,USF1,XBP1,YBOX1,ZIC3,ZN148,TFAP4',  # 88 expressed TFs
+        "nCGBins": 10,
+        "nBootstraps": 1000,
+        "nPermutations": 0,
+        "designVariableTypes": "conditionSummary:factor",
+        "designContrast": "~ conditionSummary",
+        "conditionComparison": "WT,Mutant",
+        "comparisonType": "WTvsMutant",
+        "regionExtension": 100,
+        "dir_TFBS_sorted": false,
+        "maxCoresPerRule": 4,
+        "outdir": "output"
+    },
+    "comparisons": ""
+}

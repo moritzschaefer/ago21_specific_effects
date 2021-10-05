@@ -1,0 +1,29 @@
+--- snakePipes/shared/rscripts/DB_functions.R     2021-09-21 13:14:26.592721209 +0000
++++ snakePipes/shared/rscripts/DB_functions.R.new 2021-09-01 21:57:15.657328557 +0000
+@@ -202,8 +202,14 @@
+     bam.files <- SummarizedExperiment::colData(chipCountObject$windowCounts)$bam.files
+     # Get norm factors
+     wider <- csaw::windowCounts(bam.files, bin = TRUE, width = binsize, param = chipCountObject$pe.param)
+-
+-    normfacs <- csaw::normFactors(wider, se.out=FALSE)
++    print(paste0("Trying to use scale factors file ", scale_factors))
++    message(paste0("Trying to use scale factors file ", scale_factors))
++    if(file.exists(scale_factors)){  # modified by Moritz
++        message(paste0("Using scale factors file ", scale_factors))
++        print(paste0("Using scale factors file ", scale_factors))
++        tab<-read.table(scale_factors,sep="\t",header=TRUE,as.is=TRUE,quote="")
++        normfacs<-1/(tab$scalingFactor[match(colnames(chipCountObject$windowCounts),tab$sample)]) }else{
++        normfacs <- csaw::normFactors(wider, se.out=FALSE)}
+
+     chipCountObject$normFactors <- normfacs
+--- snakePipes/shared/rscripts/CSAW.snakefile     2021-09-21 13:24:25.799036155 +0000
++++ snakePipes/shared/rscripts/CSAW.snakefile.new 2021-08-25 09:45:41.796662900 +0000
+@@ -79,7 +79,7 @@
+         insert_size_metrics = lambda wildcards,input: os.path.join(outdir, input.insert_size_metrics) if pairedEnd else [],
+         pipeline = pipeline,
+         useSpikeInForNorm = useSpikeInForNorm,
+-        scale_factors = lambda wildcards, input: os.path.join(outdir, input.scale_factors) if input.scale_factors else ""
++        scale_factors = lambda wildcards, input: os.path.join(outdir, input.scale_factors) if input.scale_factors else os.path.join(outdir, "manual_scale_factors.tsv")
+     log:
+         out = os.path.join(outdir, "CSAW_{}_{}/logs/CSAW.out".format(peakCaller, sample_name)),
+         err = os.path.join(outdir, "CSAW_{}_{}/logs/CSAW.err".format(peakCaller, sample_name))

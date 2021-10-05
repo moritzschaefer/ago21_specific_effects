@@ -1,0 +1,62 @@
+NMaskedIndex: ''
+SNPFile: null
+SNPfile: ''
+UMIBarcode: false
+UMIDedup: false
+UMIDedupOpts: --paired
+UMIDedupSep: _
+VCFfile: ''
+aligner: STAR
+alignerOptions: null
+allele_mode: null
+bamExt: .bam
+baseDir: /home/schamori/anaconda3/envs/snakePipes3/lib/python3.7/site-packages/snakePipes
+bcPattern: NNNNCCCCCCCCC
+bwBinSize: 25
+clusterConfig: shared/cluster.yaml
+clusterConfigFile: null
+configFile: null
+configMode: manual
+createDAG: false
+dnaContam: false
+downsample: null
+emailAddress: null
+emailSender: null
+ext: .fastq.gz
+fastqc: true
+featureCountsOptions: -C -Q 10 --primary
+filterGTF: null
+fragmentLength: 200
+fromBAM: false
+genome: GRCm38_release98
+indir: /home/schamori/snakePipes/rna-seq/data
+keepTemp: false
+libraryType: 2
+local: true
+maxJobs: 32
+mode: alignment,deepTools_qc
+oldConfig: null
+onlySSL: false
+organismsDir: shared/organisms
+outdir: /home/schamori/snakePipes/rna-seq
+pairedEnd: true
+pipeline: rna-seq
+plotFormat: png
+reads:
+- _R1
+- _R2
+salmonIndexOptions: --type puff -k 31
+sampleSheet: null
+smtpPassword: null
+smtpPort: 0
+smtpServer: null
+smtpUsername: null
+snakemakeOptions: ' --use-conda --conda-prefix /home/schamori/anaconda3/envs'
+strains: ''
+tempDir: /home/schamori/tmp
+toolsVersion: true
+trim: true
+trimmer: trimgalore
+trimmerOptions: --illumina --paired
+verbose: false
+workingdir: /home/schamori/snakePipes/rna-seq

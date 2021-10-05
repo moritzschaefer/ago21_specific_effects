@@ -1,0 +1,5 @@
+SampleID	Condition	bamReads	Peaks	conditionSummary
+WT_1	WT	../../pipelines/atac_seq/subsampled/WT_1.filtered.bam	../../pipelines/atac_seq/Genrich/wt.narrowPeak	WT
+WT_2	WT	../../pipelines/atac_seq/subsampled/WT_2.filtered.bam	../../pipelines/atac_seq/Genrich/wt.narrowPeak	WT
+Mutant_2	Mutant	../../pipelines/atac_seq/subsampled/Mutant_2.filtered.bam	../../pipelines/atac_seq/Genrich/Mutant.narrowPeak	Mutant
+Mutant_1	Mutant	../../pipelines/atac_seq/subsampled/Mutant_1.filtered.bam	../../pipelines/atac_seq/Genrich/Mutant.narrowPeak	Mutant
