@@ -1,0 +1,3 @@
+[submodule "figures/figure3/difftf/diffTF_repo"]
+	path = figures/figure3/difftf/diffTF_repo
+	url = https://git.embl.de/grp-zaugg/diffTF.git
