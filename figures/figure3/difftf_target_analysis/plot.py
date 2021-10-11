@@ -34,18 +34,18 @@ def genename_to_id(gene_name):
 
 gn2id = genename_to_id
 
-ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
-ago21_deg = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=[0, 1])['Ago2&1'].droplevel(1)
+ago21_specifics = pd.read_excel('../../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
+ago21_deg = pd.read_excel('../../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=[0, 1], header=[0, 1])['Ago2&1'].droplevel(1)
 PVALUE = 0.05
 MAX_DISTANCE = 1000
 
 # First, promoter-based target identification
 
 # see main.sh for generation of this file
-tfbs_df = pd.read_csv('WTvsAgo12.allMotifs_genes.merged.bed', sep='\t')
-tfbs_df['gene_id'] = tfbs_df['9'].apply(lambda v: ensembl_release.transcript_by_id(v).gene_id)
+tfbs_df = pd.read_csv('WTvsAgo12.allMotifs_genes_tss.sorted.merged.bed')
+tfbs_df['gene_id'] = tfbs_df['target_id'].apply(lambda v: ensembl_release.transcript_by_id(v).gene_id)
 tfbs_df['gene_name'] = tfbs_df['gene_id'].apply(gid2n)
-tfbs_df = tfbs_df[(tfbs_df['18'] < MAX_DISTANCE) & (tfbs_df['pval'] < PVALUE)]
+tfbs_df = tfbs_df[(tfbs_df['peak_match_distance'] < MAX_DISTANCE) & (tfbs_df['pval'] < PVALUE)]
 # only show the 5 TFs that showed very high statistical significance
 TFS = ['ERR2', 'MYC', 'CTCF', 'REST', 'KLF4']
 tfbs_df = tfbs_df[tfbs_df.TF.isin(TFS)]
@@ -54,6 +54,8 @@ fig, axes = plt.subplots(1, len(TFS), figsize=(len(TFS) * 5.5, 5.5), sharex=True
 full_tss_sets = {}
 dfs = {}
 
+tfbs_df['ago21_deg_l2fc'] = ago21_deg.reindex(tfbs_df['gene_id'])['log2FoldChange'].fillna(0).values
+tfbs_df['ago21_deg_padj'] = ago21_deg.reindex(tfbs_df['gene_id'])['padj'].fillna(1.0).values
 for ax, (tf, tf_df) in zip(axes, tfbs_df.groupby('TF')):
     per_gene = tf_df.groupby('gene_id')[['l2FC', 'ago21_deg_l2fc', 'ago21_deg_padj']].mean()
     per_gene['Ago21-specific'] = pd.Categorical(['no'] * len(per_gene), categories=['no', 'yes'], ordered=True)

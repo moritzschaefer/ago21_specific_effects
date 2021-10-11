@@ -28,16 +28,16 @@ def http_get(url, fn):
         f.write(requests.get(url, allow_redirects=True).content)
 
 # load DEG sets
-ago21_deg = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=[0, 1]).droplevel(1)['Ago2&1']
+ago21_deg = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=[0, 1], header=[0, 1]).droplevel(1)['Ago2&1']
 ago21_up_degs = set(ago21_deg.query('log2FoldChange > 0.5 & padj < 0.05').index)
 ago21_down_degs = set(ago21_deg.query('log2FoldChange < -0.5 & padj < 0.05').index)
-specific_genes = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
+specific_genes = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
 specific_up = ago21_up_degs & set(specific_genes)
 specific_down = ago21_down_degs & set(specific_genes)
 
 # load processed motif bindings (for TSS matches)
-# TODO get and gunzip
-motifs = pd.read_csv('../figure3/difftf/diffTF_repo/output/FINAL_OUTPUT/extension100/WTvsAgo12.allMotifs.tsv.gz', gunzip=True, sep='\t')
+# TODO might need to unpack tsv file
+motifs = pd.read_csv('../figure3/difftf/diffTF_repo/output/FINAL_OUTPUT/extension100/WTvsAgo12.allMotifs.tsv', sep='\t')
 motifs = motifs[['chr', 'MSS', 'MES', 'permutation', 'TF', 'TFBSID', 'strand', 'peakID',
        'l2FC', 'limma_avgExpr', 'limma_B', 'limma_t_stat', 'DESeq_ldcSE',
        'DESeq_stat', 'DESeq_baseMean', 'pval', 'pval_adj']]
@@ -47,9 +47,9 @@ tss_bed = BedTool('../../data/genes_tss.sorted.bed')
 
 # load enhancer-gene bindings
 enhancer_sites = pd.concat([
-    pd.read_csv(f, sep='\t', header=False, names=['chr_e', 'start_e', 'end_e', 'chr_p', 'start_p', 'end_p', 'gene']) for f in
-    ['../figure3/difftf_target_analysis/journal.pcbi.1009368.s020_TableS8_active_enhancers_refined.bed'
-'../figure3/difftf_target_analysis/journal.pcbi.1009368.s021_TableS9_poised_enhancers_refined.bed']
+    pd.read_csv(f, sep='\t', header=None, names=['chr_e', 'start_e', 'end_e', 'chr_p', 'start_p', 'end_p', 'gene']) for f in
+    ['../figure3/difftf_target_analysis/journal.pcbi.1009368.s020_TableS8_active_enhancers_refined.bed',
+     '../figure3/difftf_target_analysis/journal.pcbi.1009368.s021_TableS9_poised_enhancers_refined.bed']
 ])
 enhancer_sites['chr_e'] = enhancer_sites['chr_e'].apply(lambda v: v.replace('chr', ''))
 enhancer_bed = BedTool.from_dataframe(enhancer_sites)

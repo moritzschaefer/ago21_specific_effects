@@ -4,11 +4,12 @@ import glob
 import pandas as pd
 import pyensembl
 
-df = pd.read_csv('WTvsAgo12.allMotifs.tsv', sep='\t')
+# TODO might need to unpack tsv file
+df = pd.read_csv('../difftf/diffTF_repo/output/FINAL_OUTPUT/extension100/WTvsAgo12.allMotifs.tsv', sep='\t')
 df.set_index('TFBSID', inplace=True)
 
-# this code serves for different kinds of bed files. Here we only use one for now
-for f in ['WTvsAgo12.allMotifs_genes.bed', 'WTvsAgo12.allMotifs_enhancers_merged.bed']:
+# this code serves for different kinds of bed files. Here we use one for promoters, one for enhancers
+for f in ['WTvsAgo12.allMotifs_genes_tss.sorted.bed', 'WTvsAgo12.allMotifs_enhancers_merged.bed']:
     matches = pd.read_csv(f, sep='\t', header=None)
     if matches.iloc[0, 9].startswith('ENSMUST'):
         matches.rename(columns={9: 'target_id', 18: 'peak_match_distance'}, inplace=True)

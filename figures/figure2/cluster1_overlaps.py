@@ -21,11 +21,11 @@ def genename_to_id(gene_name):
 
 gn2id = genename_to_id
 
-ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq_V3-cc.xlsx', skiprows=2, sheet_name='Ago2&1_KO specific DEGs')
+ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', skiprows=2, sheet_name='Ago2&1_KO specific DEGs')
 ups = set(ago21_specifics.query('Status == "UP"')['Gene ID'])
 downs = set(ago21_specifics.query('Status == "DOWN"')['Gene ID'])
 
-cluster1 = set(pd.read_excel('../../data/TableS2_H3K27me3_clusters-cc.xlsx', skiprows=2).query('Cluster == "cluster_1"')['Gene ID'])
+cluster1 = set(pd.read_excel('../../data/TableS2_H3K27me3_clusters.xlsx', skiprows=2).query('Cluster == "cluster_1"')['Gene ID'])
 
 # From (Asenjo et al. 2020, Table S4)
 bivalent_genes = pd.read_excel('aay4768_table_s4.xlsx', index_col=0, sheet_name='HC-Bivalent ChIP-seqs').index  # the other sheet name: 'HC-Bivalent-4sUseq'

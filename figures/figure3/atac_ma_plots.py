@@ -15,7 +15,7 @@ ATAC_MUTANTS = ['Ago12', 'Ago1', 'Ago2']
 FDR_FILTER=0.05
 LOG2FC_FILTER=0.3
 
-COVERAGES = [f'../../pipelines/atac_seq/coverages/{mutant}_coverage_short_Genrich.bed' for mutant in ATAC_MUTANTS],
+COVERAGES = [f'../../pipelines/atac_seq/coverages/{mutant}_coverage_short_Genrich.bed' for mutant in ATAC_MUTANTS]
 DIFF_BINDINGS = [f'../../pipelines/atac_seq/CSAW_Genrich_{mutant}_diff_atac/DiffBinding_scores.txt' for mutant in ATAC_MUTANTS]
 SCALE_FACTORS = [f'../../pipelines/atac_seq/manual_scale_factors_{mutant.lower()}.tsv' for mutant in ATAC_MUTANTS]
 

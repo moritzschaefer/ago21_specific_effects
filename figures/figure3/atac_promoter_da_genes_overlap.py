@@ -8,9 +8,9 @@ d = 1000
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 mutant = 'Ago12'
 
-df = pd.read_excel('../../data/TableS3_ATAC-seq_DA_genes-cc.xlsx', skiprows=2)
+df = pd.read_excel('../../data/TableS3_ATAC-seq_DA_genes.xlsx', skiprows=2)
 
-ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs')
+ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs')
 
 gene_l2fcs = df[['Associate GeneID', 'log2FC (DEG)']].drop_duplicates().set_index('Associate GeneID')
 

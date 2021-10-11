@@ -13,7 +13,7 @@ ax.axvline(0, color='black')
 ax.axhline(0.5, color='black')
 cluster_colors = {'cluster_1': '#2b327f', 'cluster_2': '#5483be', 'cluster_3': '#a9cd82', 'cluster_4': '#eda043'}
 
-ago12_deg = pd.read_excel('../../data/TableS1_RNA-seq_V3-cc.xlsx', index_col=[0, 1], header=[0, 1], skiprows=2).droplevel(level=1, axis=0)[('Ago2&1', 'log2FoldChange')]
+ago12_deg = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', index_col=[0, 1], header=[0, 1], skiprows=2).droplevel(level=1, axis=0)[('Ago2&1', 'log2FoldChange')]
 
 for cluster_name, cluster_data in df.groupby('deepTools_group'):
     genes = cluster_data['name'].apply(lambda v: ensembl_release.transcript_by_id(v).gene_id).dropna()

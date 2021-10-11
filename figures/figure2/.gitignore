@@ -1,1 +1,5 @@
 files/*.npz
+files/*.bw
+*.bigWig
+*.bw
+*.wig

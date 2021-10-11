@@ -7,7 +7,7 @@ library(openxlsx)
 # TODO table should include gene_ids (not gene_names..)
 
 # we need the whole set of DEGs (1046 vs 745 oder so)
-ago21_specifics <- read.xlsx("../../data/TableS1_RNA-seq_V3-cc.xlsx",
+ago21_specifics <- read.xlsx("../../data/TableS1_RNA-seq.xlsx",
                              sheet = "Ago2&1_KO specific DEGs",
                              startRow=3)
 

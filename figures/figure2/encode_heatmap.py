@@ -13,7 +13,7 @@ ensembl_release = pyensembl.EnsemblRelease(98, pyensembl.species.mouse)
 
 PROMOTER_DISTANCE = 5000
 
-print('To run this file, please download the histone mark ChIP-seq files from ENCODE as indicated in the Materials&Methods section of our publication')
+print('To run this file, please download the histone mark ChIP-seq files (bigwig format) from ENCODE as indicated in the Materials&Methods section of our publication and place them into the files/ folder')
 
 ### Prepare gene/transcript locations
 # genes.bed contains all transcripts as provided by ENSEMBL GRCm38 v98

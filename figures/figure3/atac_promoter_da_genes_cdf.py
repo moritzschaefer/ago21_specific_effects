@@ -8,7 +8,7 @@ d = 1000
 fig, ax = plt.subplots(1, 1, figsize=(7, 6))
 mutant = 'Ago12'
 
-df = pd.read_excel('../../data/TableS4_ATAC-seq_DiffTf_targets-cc.xlsx', skiprows=2)
+df = pd.read_excel('../../data/TableS3_ATAC-seq_DA_genes.xlsx', skiprows=2)
 gene_l2fcs = df[['Associate GeneID', 'log2FC (DEG)']].drop_duplicates().set_index('Associate GeneID')
 
 df_down = df.query('`DA Status` == "down"')
@@ -23,7 +23,7 @@ for df, label, color, spec_color in zip((df_down, df_up), ('dec.', 'inc.'), ('#8
     sns.ecdfplot(l2fc, label=f'{len(l2fc)} genes with {label} chrom. access. at promoter (<{d}bp, DA Pval<{pval})', ax=ax, color=color)
 
     # plot specific-filtered
-    l2fc = gene_l2fcs.loc[promoter_close_genes.query('`GeneAgo2&1Specific` == "yes"')['Associate GeneID'].dropna().drop_duplicates().values]
+    l2fc = gene_l2fcs.loc[promoter_close_genes.query('`Ago2&1_KO Specific` == "yes"')['Associate GeneID'].dropna().drop_duplicates().values]
     sns.ecdfplot(l2fc, label=f'{len(l2fc)} {label}-DA genes, ago21-specific-filtered', ax=ax, color=spec_color)
 
 ax.set_xlim([-1, 1])

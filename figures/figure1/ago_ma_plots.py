@@ -12,8 +12,8 @@ _parentdir = pathlib.Path(__file__).parent.parent.resolve()
 sys.path.insert(0, str(_parentdir))
 
 
-mrna_df = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', index_col=[0, 1], header=[0, 1], skiprows=2).droplevel(level=1, axis=0)
-ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq_V3.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
+mrna_df = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', index_col=[0, 1], header=[0, 1], skiprows=2).droplevel(level=1, axis=0)
+ago21_specifics = pd.read_excel('../../data/TableS1_RNA-seq.xlsx', skiprows=2, index_col=0, sheet_name='Ago2&1_KO specific DEGs').index
 mutants = ('Ago1', 'Ago2', 'Ago2&1')
 
 fig, axes = plt.subplots(2, 3, figsize=(12, 12))
@@ -24,7 +24,7 @@ for ax, mutant in zip(np.transpose(axes), mutants):
     plotdf['-log10(adjusted pvalue)'] = -np.log10(mrna_df[mutant]['padj'])
     volcanoplot(plotdf, ax=ax[1], show_n=True)
     if mutant == 'Ago2&1':
-        volcanoplot(plotdf.loc[ago21_specifics.index], ax=ax[1], show_n=True, palette={'up': 'orange', 'down': 'green', 'unchanged': 'black'})
+        volcanoplot(plotdf.loc[ago21_specifics], ax=ax[1], show_n=True, palette={'up': 'orange', 'down': 'green', 'unchanged': 'black'})
 
     ax[0].set_title(mutant)
 
