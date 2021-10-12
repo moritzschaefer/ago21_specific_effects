@@ -20,6 +20,8 @@ pval = 0.05
 for df, label, color, spec_color in zip((df_down, df_up), ('dec.', 'inc.'), ('#87cefa', '#fa8072'), ('#98f5ff', '#Ff7f00')):
     promoter_close_genes = df[(df['DA region<->Gene Distance'] < 0) & (df['DA region<->Gene Distance'] > -d) & (df['Pvalue (DA)'] <= pval)]
     l2fc = gene_l2fcs.loc[promoter_close_genes['Associate GeneID'].dropna().drop_duplicates().values]
+    l2fc = l2fc.where(l2fc != 0.0)  # in our table, we described missing log2FCs as 0.0. Here we don't want to show them.
+    print(color, spec_color)
     sns.ecdfplot(l2fc, label=f'{len(l2fc)} genes with {label} chrom. access. at promoter (<{d}bp, DA Pval<{pval})', ax=ax, color=color)
 
     # plot specific-filtered

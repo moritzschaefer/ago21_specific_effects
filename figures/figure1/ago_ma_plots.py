@@ -4,7 +4,6 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from moritzsphd.plot import maplot, volcanoplot
 
 from plotlib import maplot, volcanoplot
 

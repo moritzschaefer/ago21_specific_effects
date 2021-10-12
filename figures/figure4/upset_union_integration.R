@@ -2,7 +2,6 @@ library(ComplexHeatmap)  # TODO add to conda.yaml
 library(dplyr)
 library(openxlsx)
 
-# we need to load all tabs in the excel sheet
 
 # TODO table should include gene_ids (not gene_names..)
 
@@ -11,6 +10,7 @@ ago21_specifics <- read.xlsx("../../data/TableS1_RNA-seq.xlsx",
                              sheet = "Ago2&1_KO specific DEGs",
                              startRow=3)
 
+# we need to load all tabs in the excel sheet
 analyses = c("H3K27me3 ChIP-seq", "ATAC-seq", "diffTF-derived", "KLF4 ChIP-seq", "CTCF ChIP-seq")
 for (status in c("UP", "DOWN")) {
   ago21_filtered <- filter(ago21_specifics, Status == status)

@@ -18,7 +18,7 @@ df_down = df.query('`DA Status` == "down"')
 df_up = df.query('`DA Status` == "up"')
 pval = 0.05
 
-for df, label, ax in zip((df_down, df_up), ('up', 'down'), axes):
+for df, label, ax in zip((df_up, df_down), ('up', 'down'), axes):
     promoter_close_genes = df[(df['DA region<->Gene Distance'] < 0) & (df['DA region<->Gene Distance'] > -d) & (df['Pvalue (DA)'] <= pval)]
     da_set = set(promoter_close_genes['Associate GeneID'].dropna().drop_duplicates().values)
     deg_set = set(ago21_specifics.query(f'`Status` == "{label.upper()}"').index)
